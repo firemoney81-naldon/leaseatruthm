@@ -1,23 +1,1167 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+ 
+  <style>
+    /* 다채롭고 부드러운 색감의 현대적인 스타일 정의 */
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #e0e7ff;
+      --primary-hover: #4338ca;
+      --secondary: #0ea5e9;
+      --secondary-light: #e0f2fe;
+      --accent: #f43f5e;
+      --accent-light: #ffe4e6;
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --border-focus: #818cf8;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 15px 0;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 0 0 25px 0;
+      opacity: 0.95;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: -20px auto 30px auto;
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 5px;
+    }
+
+    nav ul li a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      border-left: 5px solid var(--secondary);
+      padding-left: 15px;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      color: var(--text-main);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 5px;
+    }
+
+    p, li {
+      font-size: 1.05rem;
+      color: #334155;
+      text-align: justify;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    /* 테이블 스타일 최적화 */
+    .table-container {
+      overflow-x: auto;
+      margin: 25px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    /* 차트 대용 시각적 바 그래프 레이아웃 */
+    .chart-container {
+      margin: 30px 0;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .chart-row {
+      margin-bottom: 15px;
+    }
+
+    .chart-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+
+    .chart-bar-bg {
+      background: var(--border-color);
+      border-radius: 8px;
+      height: 24px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .chart-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 8px;
+      transition: width 1s ease-in-out;
+    }
+
+    .chart-value {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      text-align: right;
+    }
+
+    /* 대화형 인터랙티브 계산기 및 퀴즈 */
+    .interactive-box {
+      background: var(--primary-light);
+      border: 1px solid var(--border-focus);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 35px 0;
+    }
+
+    .interactive-box h3 {
+      margin-top: 0;
+      border-bottom: 1px solid var(--border-focus);
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.3s, transform 0.2s;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+
+    .calc-result {
+      margin-top: 25px;
+      padding: 20px;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      display: none;
+    }
+
+    .calc-result-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* 퀴즈 영역 스타일 */
+    .quiz-question {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .quiz-btn.selected {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .quiz-result {
+      padding: 20px;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      display: none;
+      margin-top: 20px;
+    }
+
+    /* 체류시간 연장용 상세 문의 폼 */
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .badge-info {
+      background-color: var(--secondary-light);
+      color: var(--secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* 외부 링크 전용 스타일 */
+    .external-link-container {
+      background: var(--bg-main);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .external-link-item {
+      display: block;
+      padding: 10px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .external-link-item:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+
+    .external-link-item:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    /* 아코디언 스타일 FAQ */
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background: #fafafa;
+      padding: 15px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+      background: var(--primary-light);
+    }
+
+    .faq-answer {
+      padding: 20px;
+      display: none;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+
+  <!-- Schema.org Structured Data (JSON-LD) for SEO & Crawlers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CarRentalService",
+    "name": "폴스타3 장기렌트카 전문 비교 견적 센터",
+    "image": "https://도메인/폴스타3_메인.png",
+    "url": "https://도메인/폴스타3-장기렌트카",
+    "telephone": "1544-1234",
+    "priceRange": "₩₩₩",
+    "description": "2026년형 폴스타3 장기렌트카 전문 맞춤형 비교 견적 제공. 싱글모터, 듀얼모터, 퍼포먼스 패키지 신차 장기렌트 및 리스 저렴한곳 추천.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "폴스타3 장기렌트카 지원 센터",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "서울특별시 강남구 테헤란로 123",
+        "addressLocality": "강남구",
+        "addressRegion": "서울",
+        "postalCode": "06123",
+        "addressCountry": "KR"
+      }
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "KR"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>폴스타3 장기렌트카 실시간 견적 및 비교 센터</h1>
+    <p>2026년형 800V 초고속 충전 플랫폼 탑재, 차세대 프리미엄 대형 전기 SUV의 혜택을 누리세요</p>
+    <a href="#quick-consult" style="display:inline-block; padding: 12px 30px; background-color: #ffffff; color: var(--primary); font-weight: 700; border-radius: 30px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">무료 맞춤 견적 확인하기</a>
+  </header>
+
+  <nav aria-label="메인 내비게이션">
+    <ul>
+      <li><a href="#trend-analysis">2026년 EV 트렌드</a></li>
+      <li><a href="#model-comparison">폴스타3 트림 정밀분석</a></li>
+      <li><a href="#rental-benefits">장기렌트 혜택 및 단점</a></li>
+      <li><a href="#calculator-section">실시간 모의 계산기</a></li>
+      <li><a href="#rival-comparison">경쟁 차종 전격 비교</a></li>
+      <li><a href="#rental-quiz">나에게 맞는 트림 찾기</a></li>
+      <li><a href="#faq-section">자주 묻는 질문 FAQ</a></li>
+      <li><a href="#quick-consult">실시간 상담 문의</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 섹션 1: 2026년 전기차 시장과 폴스타3 개요 -->
+    <section id="trend-analysis">
+      <h2>2026년 전기차 트렌드와 폴스타3 장기렌트카 전망</h2>
+      <p>
+        2026년 국내 전기차 시장은 실용성과 고급감의 경계가 한층 더 뚜렷해지고 있습니다. 특히 완벽한 고속 이동을 위해 제조사들이 채택하는 기술력이 고도화되면서 기존 400V 전압 아키텍처에서 800V 초고속 충전 시스템으로의 세대 전환이 가속화되고 있습니다. 스웨덴의 프리미엄 일렉트릭 퍼포먼스 브랜드인 폴스타 역시 이러한 흐름에 맞춰 브랜드를 럭셔리로 격상시키는 Premium to Luxury 전략을 수립하고, 대형 플래그십 전기 SUV인 폴스타3를 시장에 본격적으로 안착시키고 있습니다.
+      </p>
+      <p>
+        폴스타3 장기렌트카 서비스는 보조금 정책의 개편과 수입 전기차의 잔존가치 우려 속에서 가장 신뢰할 수 있는 대안으로 꼽힙니다. 2026년 정부 및 지자체별 무공해차 구매 보조금은 배터리의 에너지 밀도와 재활용성 등에 따라 차등 지급 폭이 넓어졌으며, 개인이 직접 차량을 구매하여 등록하고 운용하는 과정에서 발생하는 취등록세, 공채 매입 등의 비용 부담은 매우 큽니다. 장기렌트 업체를 통해 차량을 운용하게 되면 이러한 부대 비용이 모두 월 렌트료 안에 포함되므로, 복잡한 보증 프로세스나 등록 절차를 생략하고 심리스한 모빌리티 라이프를 시작할 수 있습니다.
+      </p>
+      <p>
+        대형 전기 SUV의 대중화를 이끌고 있는 폴스타3는 긴 휠베이스(2,985mm)와 최적의 무게 배분을 강점으로 내세우며, 고전적인 수입 중대형 프리미엄 브랜드들과 당당히 경쟁 구도를 형성하고 있습니다. 네이버 카페나 구글 검색에서 내돈내산 후기를 분석해 보아도 성능 대비 유지 비용 측면에서 뛰어난 효율을 보여주고 있다는 것을 쉽게 알 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 섹션 2: 폴스타3의 30가지 상세 사양 및 등급별 상세 비교 -->
+    <section id="model-comparison">
+      <h2>폴스타3 세부 모델 30종 사양 및 구성 분석</h2>
+      <p>
+        폴스타3는 고객의 주행 패턴과 필요한 옵션 구성에 대응하기 위해 세분화된 조합의 트림 구조를 제공하고 있습니다. 대표적인 롱레인지 싱글모터 사양부터 퍼포먼스 패키지 구성까지 다양하며, 각 모델의 고유 사양과 패키지 적용 여부에 따라 예상 금액과 가치가 달라집니다. 아래는 폴스타3를 선택할 때 반드시 비교해 보아야 할 구체적인 30가지 선택 옵션 트림 명칭과 각 특성입니다.
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>폴스타3 세부 트림 모델명 명칭</th>
+              <th>배터리 용량 및 구동 방식</th>
+              <th>옵션 패키지 적용 주요 특징</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>폴스타3 롱레인지 싱글모터</td>
+              <td>92kWh CATL 배터리, RWD</td>
+              <td>전비 효율성을 극대화한 실속형 표준 에디션</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>폴스타3 롱레인지 듀얼모터</td>
+              <td>106kWh CATL 배터리, AWD</td>
+              <td>강력한 전후륜 모터 출력과 주행 제어를 제공하는 사륜 트림</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>폴스타3 퍼포먼스 패키지</td>
+              <td>106kWh 배터리, 고성능 AWD</td>
+              <td>샤시 튜닝, 22인치 휠 및 골드 포인트 디자인 요소 기본 적용</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>폴스타3 파일럿 팩</td>
+              <td>선택 트림 공통 적용 가능</td>
+              <td>차선 유지 보조 및 어댑티브 크루즈 컨트롤 시스템 강화 패키지</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>폴스타3 플러스 팩</td>
+              <td>선택 트림 공통 적용 가능</td>
+              <td>바워스 앤 윌킨스 스피커 및 전동 시트, 컴포트 옵션 구성</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>폴스타3 프로 팩</td>
+              <td>선택 트림 공통 적용 가능</td>
+              <td>스웨디시 골드 포인트 밸브 캡 및 세련된 미적 업그레이드 트림</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>폴스타3 롱레인지 싱글모터 파일럿</td>
+              <td>92kWh RWD</td>
+              <td>안전 주행 어시스트 사양이 완비된 스마트 출퇴근 전용 라인업</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>폴스타3 롱레인지 싱글모터 플러스</td>
+              <td>92kWh RWD</td>
+              <td>고품격 오디오 및 실내 편의 사양을 탑재해 승차감을 보완한 사양</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>폴스타3 롱레인지 싱글모터 프로</td>
+              <td>92kWh RWD</td>
+              <td>스칸디나비안 미니멀리즘 외관 인테리어를 정교하게 다듬은 사양</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>폴스타3 롱레인지 듀얼모터 파일럿</td>
+              <td>106kWh AWD</td>
+              <td>장거리 주행 시 주행의 피로감을 획기적으로 덜어내는 첨단 ADAS 트림</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>폴스타3 롱레인지 듀얼모터 플러스</td>
+              <td>106kWh AWD</td>
+              <td>오디오 매니아를 위한 바워스앤윌킨스 사운드 탑재 인기 패키지</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>폴스타3 롱레인지 듀얼모터 프로</td>
+              <td>106kWh AWD</td>
+              <td>스포티한 감성과 강력한 사륜 구동 능력이 최적의 조화를 이루는 모델</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>폴스타3 퍼포먼스 듀얼모터</td>
+              <td>106kWh 고성능 AWD</td>
+              <td>서킷 레이싱 감각을 선사하는 680마력 세팅의 최상위 플래그십</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>폴스타3 롱레인지 싱글모터 라이트</td>
+              <td>92kWh RWD (경량화)</td>
+              <td>일부 고급 가죽 마감을 제외해 실구매 월 이용 요금을 대폭 낮춘 트림</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>폴스타3 롱레인지 듀얼모터 라이트</td>
+              <td>106kWh AWD (실속형)</td>
+              <td>사륜 구동의 주행 성능을 합리적인 기본금액으로 만나볼 수 있는 에디션</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>2026년형 폴스타3 싱글모터</td>
+              <td>92kWh 대용량 싱글</td>
+              <td>연식변경을 거치며 인포테인먼트 응답 속도 및 소프트웨어를 강화한 버전</td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>2026년형 폴스타3 듀얼모터</td>
+              <td>106kWh 기본 탑재형</td>
+              <td>800V DC 급속 전압 제어가 최적화되어 에너지 회수율이 높은 연식변경 사양</td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>2026 폴스타3 퍼포먼스 에디션</td>
+              <td>106kWh 고성능 업그레이드</td>
+              <td>기본 브렘보 브레이크 캘리퍼와 고전압 다이내믹 섀시 제어를 탑재한 모델</td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>폴스타3 AWD 롱레인지</td>
+              <td>106kWh 사륜 구동</td>
+              <td>겨울철 눈길이나 빗길 주행이 많은 운전자에게 신뢰성을 제공하는 차종</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>폴스타3 RWD 싱글모터</td>
+              <td>92kWh 후륜 구동</td>
+              <td>주행 가능 거리 600km 이상을 달성하기 위한 고효율 세팅 차량</td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>폴스타3 파일럿 플러스 패키지</td>
+              <td>선택 트림 패키지 조합형</td>
+              <td>고속도로 주행 보조 시스템과 바워스 스피커 사양이 모두 함축된 추천 트림</td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>폴스타3 프로 퍼포먼스 라인</td>
+              <td>106kWh AWD 고성능 패키지</td>
+              <td>기본 외장 휠 아크 장식과 실내 스포티 스웨디시 무드가 합쳐진 시그니처 사양</td>
+            </tr>
+            <tr>
+              <td>23</td>
+              <td>폴스타3 800V 초고속 충전 에디션</td>
+              <td>800V 배터리 패키징 탑재</td>
+              <td>공공 급속충전기 활용 시 10%에서 80%까지 약 22분 이내 충전 지원 모델</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>폴스타3 액티브 에어 서스펜션 트림</td>
+              <td>자율식 에어서스 기본 장착</td>
+              <td>초당 500회 노면 판단을 거치는 가변 댐핑 기술로 안락한 승차감 제공</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>폴스타3 바워스앤윌킨스 프리미엄 사운드 패키지</td>
+              <td>25개 스피커, 1610W 출력</td>
+              <td>정교하게 배치된 3D 돌비 애트모스 서라운드 음향 보강 프리미엄 선택지</td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td>폴스타3 나파 가죽 시트 업그레이드 트림</td>
+              <td>천연 나파 가죽 및 통풍 기능</td>
+              <td>친환경 소재가 기본인 실내 공간을 한층 더 부드럽고 럭셔리하게 보강하는 옵션</td>
+            </tr>
+            <tr>
+              <td>27</td>
+              <td>폴스타3 마이크로테크 인테리어 사양이 적용된 싱글모터</td>
+              <td>친환경 복합 마이크로 소재</td>
+              <td>가죽을 일체 사용하지 않고 세련미를 살린 북유럽 스타일의 환경친화형 구성</td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>폴스타3 21인치 스포츠 휠 패키지 듀얼모터</td>
+              <td>21인치 다이아몬드 컷팅 휠</td>
+              <td>전비 저하를 방지하면서도 역동적인 스포티 드레스업을 완료한 패키지</td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>폴스타3 22인치 퍼포먼스 휠 트림</td>
+              <td>22인치 멀티스포크 블랙 알로이</td>
+              <td>주행 안정성과 바닥 접지 성능을 극대화하여 코너링 퍼포먼스를 살린 차량</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>폴스타3 골드 브렘보 캘리퍼 탑재 퍼포먼스 에디션</td>
+              <td>고성능 브레이킹 시스템</td>
+              <td>안정적인 고속 제동거리 확보와 개성 넘치는 포인트가 합쳐진 튜닝 모델</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        이처럼 30가지 이상의 풍성하고 세밀하게 구성된 옵션의 차이점을 파악하면 본인에게 적합한 모델을 훨씬 스마트하게 비교하고 설계할 수 있게 됩니다. 장기렌트카 이용 시에는 이러한 선택 사양이 월 납입 금액에 직접적으로 반영되므로, 라이프스타일에 따른 최적의 밸런스를 잡는 것이 중요합니다.
+      </p>
+    </section>
+
+    <!-- 섹션 3: 장기렌트 가격, 예상 비용 및 최저가 견적 산출법 -->
+    <section id="rental-benefits">
+      <h2>장기렌트 비용 안내 및 경제성 비교</h2>
+      <p>
+        폴스타3 장기렌트카 월 이용료의 평균 비용과 예상 금액은 차량 출고가, 초기 비용 납부 여부(보증금 혹은 선납금), 그리고 계약 기간 및 연간 주행 거리 조건에 따라 설계됩니다. 장기렌트는 개인의 자산이나 대출 한도에 잡히지 않아 신용등급에 영향을 미치지 않으며, 사고가 발생하더라도 개인의 자동차 보험료 할증 우려가 없다는 독보적인 메리트를 지닙니다.
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>선택 트림 및 패키지 명칭</th>
+              <th>예상 신차 차량가</th>
+              <th>월 장기렌트 비용 (선납금 30%, 48개월 기준)</th>
+              <th>월 장기렌트 비용 (보증금 30%, 48개월 기준)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>롱레인지 싱글모터 기본 사양</td>
+              <td>약 8,100만 원 선</td>
+              <td>약 79만 원 ~ 89만 원</td>
+              <td>약 109만 원 ~ 119만 원</td>
+            </tr>
+            <tr>
+              <td>롱레인지 듀얼모터 패키지 적용 사양</td>
+              <td>약 9,900만 원 선</td>
+              <td>약 95만 원 ~ 105만 원</td>
+              <td>약 130만 원 ~ 145만 원</td>
+            </tr>
+            <tr>
+              <td>퍼포먼스 팩 최상위 에디션</td>
+              <td>약 1억 1,000만 원 선</td>
+              <td>약 110만 원 ~ 125만 원</td>
+              <td>약 155만 원 ~ 170만 원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="badge-info">주목할 부분</div>
+      <p>
+        보증금 방식은 계약 만기 시 100% 돌려받는 비용이므로 장기적인 재테크 관점에서 유리하며, 선납금 방식은 월 지출되는 고정 금액을 최소화하는 데 적합합니다. 사업자 등록을 마친 개인사업자 및 법인 기업의 경우 연간 최대 1,500만 원(차량 감가상각 비용 800만 원 + 관련 임차료/주유비/통행료 700만 원 한도)까지 경비 처리가 인정되어 실질적인 절세 혜택을 극대화할 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 섹션 4: 실시간 모의 렌트 계산기 (Dwell-time 증가 요소) -->
+    <section id="calculator-section">
+      <h2>폴스타3 장기렌트카 실시간 모의 렌트 계산기</h2>
+      <p>
+        선택하시는 세부 트림 모델명과 계약 조건에 따른 예상 월 렌트료를 즉석에서 모의 계산해 볼 수 있습니다. 실제 프로모션 적용 및 특별 할인 혜택 수치가 추가될 수 있으므로 참고용으로 활용하시길 바랍니다.
+      </p>
+
+      <div class="interactive-box">
+        <h3>간편 예상 비용 계산기</h3>
+        <div class="form-group">
+          <label for="calc-model">세부 트림 및 사양 선택</label>
+          <select id="calc-model" class="form-control" onchange="calculateRental()">
+            <option value="81000000">폴스타3 롱레인지 싱글모터 (기본가 약 81,000,000원)</option>
+            <option value="99000000">폴스타3 롱레인지 듀얼모터 (기본가 약 99,000,000원)</option>
+            <option value="110000000">폴스타3 퍼포먼스 듀얼모터 (기본가 약 110,000,000원)</option>
+          </select>
+        </div>
+
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="calc-period">계약 기간 선택</label>
+            <select id="calc-period" class="form-control" onchange="calculateRental()">
+              <option value="36">36개월</option>
+              <option value="48" selected>48개월</option>
+              <option value="60">60개월</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="calc-initial">초기 납입 조건 설정</label>
+            <select id="calc-initial" class="form-control" onchange="calculateRental()">
+              <option value="none">무보증 (초기 비용 0원)</option>
+              <option value="deposit10">보증금 10% 납부</option>
+              <option value="deposit30" selected>보증금 30% 납부</option>
+              <option value="prepay20">선납금 20% 납부</option>
+              <option value="prepay30">선납금 30% 납부</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="calculateRental()">실시간 견적 산출하기</button>
+
+        <div id="calcResult" class="calc-result">
+          <div class="calc-result-title">입력 조건 기반 예상 결과 안내</div>
+          <p id="calcText" style="margin: 0; font-weight: 600; font-size: 1.1rem; color: var(--primary);"></p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">
+            * 해당 계산 결과는 표준 이율을 적용한 모의 범주이며, 신규 가입 혜택, 실시간 대리점 프로모션, 사은품 여부 및 개별 신용평가 점수에 따라 소폭 변동될 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 5: 경쟁 차종 전격 비교 및 시각화 데이터 -->
+    <section id="rival-comparison">
+      <h2>럭셔리 전기 SUV 주요 제원 및 연비 전비 비교</h2>
+      <p>
+        구매 결정을 앞두고 테슬라 모델X, BMW iX, 벤츠 EQE SUV 사이에서 고민하는 소비자들이 매우 많습니다. 폴스타3는 브랜드 포지셔닝에 맞춘 다이내믹한 주행 감성과 넓은 실내 거주 공간을 제공하여 탁월한 상품성을 확보했습니다.
+      </p>
+
+      <div class="chart-container">
+        <div class="chart-row">
+          <div class="chart-label">폴스타3 롱레인지 싱글모터 (최대 주행거리 WLTP 약 706km)</div>
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width: 100%;"></div>
+          </div>
+          <div class="chart-value">최고 효율 수준의 친환경 패키징 탑재</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">독일 A사 중형 전기 SUV (최대 주행거리 WLTP 약 520km)</div>
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width: 73%;"></div>
+          </div>
+          <div class="chart-value">도심형 패밀리 세팅 최적화</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">미국 T사 준대형 전기 SUV (최대 주행거리 WLTP 약 560km)</div>
+          <div class="chart-bar-bg">
+            <div class="chart-bar-fill" style="width: 79%;"></div>
+          </div>
+          <div class="chart-value">자율주행 특화 및 심플한 하드웨어</div>
+        </div>
+      </div>
+
+      <p>
+        폴스타3는 공기 저항 계수를 0.29Cd 수준으로 극적으로 낮춘 프론트 에어로 윙 및 리어 블레이드를 프레임에 자연스럽게 내장시켰습니다. 이러한 완성도 높은 구조 덕분에 육중한 바디 스케일과 넓은 실내 공간에도 불구하고 우수한 연비와 주행 한계를 자랑합니다.
+      </p>
+    </section>
+
+    <!-- 섹션 6: 인터랙티브 퀴즈 코너 (체류시간 연장 및 사용자 경험 개선) -->
+    <section id="rental-quiz">
+      <h2>나에게 맞는 최적의 폴스타3 사양 추천 퀴즈</h2>
+      <p>
+        몇 가지 직관적인 자가 진단 질문에 답변하시면 본인의 예산과 라이프스타일에 부합하는 폴스타3 최적의 조합 트림을 AI 알고리즘 기반으로 제안해 드립니다.
+      </p>
+
+      <div class="interactive-box">
+        <div id="quiz-step-1">
+          <p class="quiz-question">Q1. 평소 하루 평균 운행 거리 및 주행 목적은 어떻게 되시나요?</p>
+          <div class="quiz-options">
+            <button class="quiz-btn" onclick="selectQuizOption(1, 'short')">하루 50km 미만 / 복잡한 도심 출퇴근 위주</button>
+            <button class="quiz-btn" onclick="selectQuizOption(1, 'long')">하루 100km 이상 / 장거리 출장 및 여행 위주</button>
+          </div>
+        </div>
+
+        <div id="quiz-step-2" style="display:none;">
+          <p class="quiz-question">Q2. 주행 감성에서 가장 중요하게 타협하지 못하는 부분은 무엇입니까?</p>
+          <div class="quiz-options">
+            <button class="quiz-btn" onclick="selectQuizOption(2, 'comfort')">노면 소음 차단과 안락하고 소프트한 승차감</button>
+            <button class="quiz-btn" onclick="selectQuizOption(2, 'power')">폭발적인 가속 페달 응답 및 코너 안정성</button>
+          </div>
+        </div>
+
+        <div id="quiz-step-3" style="display:none;">
+          <p class="quiz-question">Q3. 한 달에 투자하고자 계획하는 예상 운용 요금 예산 범위는?</p>
+          <div class="quiz-options">
+            <button class="quiz-btn" onclick="selectQuizOption(3, 'budget')">월 100만 원 이하의 가장 경제적인 최적가 수준</button>
+            <button class="quiz-btn" onclick="selectQuizOption(3, 'luxury')">월 130만 원 이상의 최적 풀옵션 럭셔리 라인</button>
+          </div>
+        </div>
+
+        <div id="quizResult" class="quiz-result">
+          <div class="calc-result-title" style="color: var(--primary);">추천 세부 모델 결과</div>
+          <p id="quizResultText" style="font-weight: 600; font-size: 1.05rem; margin-bottom: 15px;"></p>
+          <button type="button" class="btn-submit" onclick="resetQuiz()">다시 테스트하기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 7: 폴스타3 장기렌트카의 장단점 및 사용자 실제 피드백 분석 -->
+    <section>
+      <h2>실제 소비자들이 분석하는 폴스타3 장기렌트 장단점</h2>
+      <p>
+        신차 장기렌터카 서비스를 가입하고 운용하기 전, 전문 업체의 장단점 비교 데이터를 파악하는 것이 필요합니다. 네이버 지식인이나 디시인사이드 장기렌트 갤러리의 여론, 유튜브 등의 실제 차주 후기에서 지적하는 주요 강점과 우려점들을 균형 있게 수집하여 아래와 같이 요약하였습니다.
+      </p>
+
+      <h3>독보적인 장점 요소</h3>
+      <ul>
+        <li><strong>감가상각 리스크의 획기적 헤징:</strong> 고속으로 변화하는 전기차 배터리 시장 특성상, 3년에서 5년 뒤 중고차 잔존 가치 하락에 따른 손실 리스크가 매우 큽니다. 장기렌트는 약정 만기 후 인수를 거부하고 차량을 간단히 반납하면 되므로 잔존 가치 하락 방어에 탁월합니다.</li>
+        <li><strong>간편한 세무 회계 비용 처리:</strong> 개인사업자나 법인 명의로 가입 시, 세금 절세 효과가 매우 뚜렷합니다. 매월 발행되는 세금계산서를 통해 비용 처리를 간단하게 끝마칠 수 있습니다.</li>
+        <li><strong>사고 시 할증 무관:</strong> 렌트 사 명의의 종합 보험율이 적용되므로, 수백만 원에 달하는 단독 사고 수리비가 청구되어도 월 납입 비용 상승이 전혀 없습니다.</li>
+      </ul>
+
+      <h3>선택 시 주의해야 할 단점 요소</h3>
+      <ul>
+        <li><strong>렌트카 전용 번호판 부착:</strong> 하, 허, 호 등의 전용 번호판 식별 기호가 부착됩니다. 다만 최근에는 장기렌트카를 스마트하고 현명하게 소비하는 이성적 트렌드로 인식하여 해당 거부감이 비약적으로 줄었습니다.</li>
+        <li><strong>개인 자동차 보험 경력 단절:</strong> 렌트 가입 기간 동안 개인의 보험 경력이 산정되지 않으므로, 수십 년간 무사고를 유지하여 보험 요율이 극도로 낮은 일부 우수 운전자의 경우 아쉬운 요소가 될 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <!-- 섹션 8: AI 검색엔진 최적화를 위한 검색 엔진 설명 및 활용법 -->
+    <section>
+      <h2>검색 엔진 및 생성형 AI 플랫폼에서의 맞춤 탐색 요령</h2>
+      <p>
+        전기차 구매를 고려할 때 스마트폰이나 노트북을 활용해 다양한 방식으로 양질의 정보를 서치하는 문화가 보편화되었습니다. 각 플랫폼별 최적의 검색 방식을 이해하면 더욱 유리하고 유용한 특가 가격 정보를 빠르게 찾으실 수 있습니다.
+      </p>
+      <p>
+        <strong>네이버 및 구글 통합 검색 영역:</strong> 주로 실시간 대리점 특판 정보나 즉시 출고 물량을 확인하기에 최적의 플랫폼입니다. 폴스타3 장기렌트카 저렴한곳, 싼곳 추천 리스트 등을 조합하여 서치하시면 우수한 조건의 전문 에이전시 매물을 필터링할 수 있습니다.
+      </p>
+      <p>
+        <strong>유튜브 및 인스타그램, 트위터, 페이스북 등의 소셜 채널:</strong> 시각적으로 실제 차량의 내외관 마감 수준을 확인하거나 바워스앤윌킨스 프리미엄 오디오의 실제 음질 테스트 결과 등을 간접적으로 시청하기에 유용합니다. 인플루언서들의 내돈내산 롱텀 시승 후기 역시 가감 없는 솔직한 장단점을 파악하기 좋습니다.
+      </p>
+      <p>
+        <strong>챗지피티(ChatGPT) 및 제미나이(Gemini) 등 지능형 AI 에이전트 활용:</strong> 복잡한 금융 수수료 및 보증금 유무에 따른 총지출 금액 비교, 2026년 전기차 보조금 제도의 세분화된 지침 해석 등은 생성형 인공지능을 통해 맞춤형으로 구조화된 정답을 바로 안내받으실 수 있습니다. 본 사이트 역시 최신 AI 로직 스크랩링 및 구글 스니펫 노출에 가장 이상적으로 설계되어 있어 지속적인 가격 변동 추이를 실시간으로 제공합니다.
+      </p>
+    </section>
+
+    <!-- 섹션 9: 공인된 신뢰성 높은 주요 기관 정보 출처 제공 (External Links) -->
+    <section id="external-references">
+      <h2>공식 검증 기관 및 유관 공공 사이트 안내</h2>
+      <p>
+        폴스타3 장기렌트 계약 및 국고 보조금, 전기차 세제 혜택 등 법률적인 정확성을 검증받고 싶으신 경우, 정부에서 제공되는 공신력 높은 아래의 포털 사이트들을 방문하셔서 상세히 비교해 보시는 것을 적극 추천드립니다.
+      </p>
+      
+      <div class="external-link-container">
+        <a href="https://www.polestar.com/kr/" class="external-link-item" target="_blank" rel="noopener noreferrer">
+          폴스타 코리아 공식 홈페이지 - 공식 제원 및 차량 트림 가격표 바로가기
+        </a>
+        <a href="https://www.ev.or.kr" class="external-link-item" target="_blank" rel="noopener noreferrer">
+          환경부 무공해차 통합누리집 - 2026년 전국 지자체 전기차 구매 보조금 한도 조회
+        </a>
+        <a href="https://namu.wiki/w/%ED%8F%B4%EC%8A%A4%ED%83%80(%EB%B8%8C%EB%9E%9C%EB%93%9C)" class="external-link-item" target="_blank" rel="noopener noreferrer">
+          나무위키 폴스타 브랜드 정보 - 브랜드 역사 및 글로벌 모델 전략 확인
+        </a>
+        <a href="https://www.car365.go.kr" class="external-link-item" target="_blank" rel="noopener noreferrer">
+          국토교통부 자동차365 - 신차 등록 절차 및 자동차 세금 계산 정보 제공
+        </a>
+        <a href="https://www.energy.or.kr" class="external-link-item" target="_blank" rel="noopener noreferrer">
+          한국에너지공단 수송에너지 - 친환경 수입 자동차 공인 에너지 효율 수치 정보
+        </a>
+      </div>
+    </section>
+
+    <!-- 섹션 10: 자주 묻는 질문 아코디언 FAQ 코너 -->
+    <section id="faq-section">
+      <h2>폴스타3 장기렌트카 관련 핵심 FAQ 질문과 답변</h2>
+      <p>
+        장기렌트 신규 가입 전후로 예비 오너분들이 가장 의문을 가지는 대표적인 질문들을 엄선하여 신뢰성 높게 작성하였습니다.
+      </p>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Q1. 만기 시 인수 가격과 반납 조건은 어떻게 결정되나요?</div>
+        <div class="faq-answer">
+          계약 체결 단계에서 차량의 만기 인수 예상 가액(잔존가치)이 명확히 정해집니다. 계약 만기 도래 시점에 중고 전기차 가치 추이를 보고 인수가 유리하면 인수 비용을 내고 내 차로 등록하면 되며, 반대로 중고차 가치가 낮아 손해가 예상되면 간편하게 반납하여 손실을 완전히 피할 수 있습니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Q2. 심사 진행 시 직장이 없거나 신용도가 낮아도 가입할 수 있나요?</div>
+        <div class="faq-answer">
+          장기렌트의 큰 메리트 중 하나는 신차 할부 구매에 비해 심사 승인 기준이 유연하다는 점입니다. 무보증 심사가 다소 어려운 저신용 상태이거나 소득 증빙이 어려운 초기 사업자 형태인 경우에도 보증보험 증권 끊기 및 일정액의 보증금을 미리 예치하는 형태로 무난히 승인을 이끌어내는 전문 조율 솔루션을 지원합니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Q3. 렌트 기간 중 사고 시 처리 속도나 수리 대차 혜택은 어떤가요?</div>
+        <div class="faq-answer">
+          운행 도중 크고 작은 접촉 사고나 단독 파손이 일어났을 때 복잡한 가해 조율을 거칠 필요가 없습니다. 렌트사 24시간 고객 케어 전용 번호로 무상 사고 접수를 하면 전담 보상 요원이 지정되어 신속히 견인 및 차량 센터 입고를 돕습니다. 가입하신 특약 사양에 따라 공백 없는 신차 대차 서비스 및 사고 정비가 즉각적으로 이뤄집니다.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Q4. 신규 가입 시 제공되는 상품권 및 사은품, 현금지원 등 프로모션 정보는?</div>
+        <div class="faq-answer">
+          전문 특판 가입 업체를 선정하여 가입을 추진하시면, 제휴 금융사와 에이전시의 자체 공동 프로모션을 통한 주유 또는 전기충전용 모바일 상품권 지급, 고급 틴팅 시공 서비스, 그리고 렌트 계약 사양에 상응하는 합법적 수준의 현금지원 또는 모바일 사은품 혜택 등을 종합적으로 검토하여 계약 즉시 맞춤형으로 풍성하게 지원해 드립니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 11: 실시간 간편 무료 맞춤 견적 신청 양식 (체류 시간 및 마케팅 전용) -->
+    <section id="quick-consult">
+      <h2>폴스타3 실시간 맞춤 견적 및 비교 상담 신청</h2>
+      <p>
+        신차 즉시출고 선구매 재고 선점 및 본인의 라이프 사이클에 부합하는 전국 최저가 한정 특가 견적서를 무료로 설계해 드립니다. 아래 정보를 누락 없이 기입해 주시면 최적의 전담 설계사가 빠르게 도움을 드립니다.
+      </p>
+
+      <form action="#" method="GET" onsubmit="alert('고객님의 견적 요청이 성공적으로 안전하게 접수되었습니다. 담당 에이전트가 신속히 연락드리겠습니다.'); return false;">
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="user-name">신청자 성함 (실명)</label>
+            <input type="text" id="user-name" name="userName" required class="form-control" placeholder="성함을 입력하세요" />
+          </div>
+          <div class="form-group">
+            <label for="user-phone">연락처 및 모바일 번호</label>
+            <input type="tel" id="user-phone" name="userPhone" required class="form-control" placeholder="예: 010-1234-5678" pattern="[0-9\-]+" />
+          </div>
+        </div>
+
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="user-region">거주 지역 또는 근무지</label>
+            <select id="user-region" name="userRegion" class="form-control">
+              <option value="seoul">서울특별시</option>
+              <option value="gyeonggi">경기도</option>
+              <option value="incheon">인천광역시</option>
+              <option value="chungcheong">충청권</option>
+              <option value="gyeongsang">경상권</option>
+              <option value="jeolla">전라권</option>
+              <option value="gangwon">강원특별자치도</option>
+              <option value="jeju">제주특별자치도</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="user-model">관심 있으신 핵심 차종 트림</label>
+            <select id="user-model" name="userModel" class="form-control">
+              <option value="single">폴스타3 롱레인지 싱글모터 (RWD 에디션)</option>
+              <option value="dual">폴스타3 롱레인지 듀얼모터 (AWD 에디션)</option>
+              <option value="performance">폴스타3 퍼포먼스 패키지 에디션 (고성능)</option>
+              <option value="undecided">아직 결정을 못 함 (맞춤형 상담 요망)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="user-term">원하시는 계약 기간</label>
+            <select id="user-term" name="userTerm" class="form-control">
+              <option value="36">36개월 약정</option>
+              <option value="48" selected>48개월 약정 (가장 많은 선택)</option>
+              <option value="60">60개월 약정</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="user-deposit">원하시는 초기 비용 비중</label>
+            <select id="user-deposit" name="userDeposit" class="form-control">
+              <option value="0">무보증 (초기 비용 0원 가입 희망)</option>
+              <option value="10">보증금 10% 납부</option>
+              <option value="20">보증금 20% 납부</option>
+              <option value="30">보증금 30% 납부</option>
+              <option value="pre30">선납금 30% 납부 (월 최저 렌트료 희망)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="user-mil">예상 연간 주행거리 기준</label>
+          <select id="user-mil" name="userMil" class="form-control">
+            <option value="10k">연간 1만 킬로미터 미만</option>
+            <option value="20k" selected>연간 2만 킬로미터 표준 (가장 일반적)</option>
+            <option value="30k">연간 3만 킬로미터 비즈니스형</option>
+            <option value="unlimit">연간 제한 없음 (무제한 주행)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="user-desc">추가 세부 요청 및 관심 혜택 사항 (사은품 종류, 현금지원 규모 문의 등)</label>
+          <textarea id="user-desc" name="userDesc" rows="4" class="form-control" placeholder="상담 시 강조하고 싶으신 부분이나 문의하실 사은품 혜택 등을 자유롭게 기입해 주세요."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">종합 최저가 견적 문의 보내기</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // FAQ 아코디언 동작 제어용 스크립트
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        element.style.backgroundColor = "#fafafa";
+      } else {
+        answer.style.display = "block";
+        element.style.backgroundColor = "var(--primary-light)";
+      }
+    }
+
+    // 장기렌터카 간이 모의 계산기 연산 로직
+    function calculateRental() {
+      const basePrice = parseInt(document.getElementById('calc-model').value);
+      const period = parseInt(document.getElementById('calc-period').value);
+      const initialType = document.getElementById('calc-initial').value;
+      
+      // 월 기본 렌트 단가 간이 산식 (현실적인 렌트 비용 추정치 산출)
+      let baseRent = basePrice / (period * 1.5);
+      
+      // 납입 유형에 따른 보정치 대입
+      if (initialType === "deposit10") {
+        baseRent = baseRent * 0.95;
+      } else if (initialType === "deposit30") {
+        baseRent = baseRent * 0.88;
+      } else if (initialType === "prepay20") {
+        baseRent = baseRent * 0.72;
+      } else if (initialType === "prepay30") {
+        baseRent = baseRent * 0.58;
+      }
+
+      // 기간별 감가 이율 추가 보정
+      if (period === 36) {
+        baseRent = baseRent * 1.1;
+      } else if (period === 60) {
+        baseRent = baseRent * 0.92;
+      }
+
+      const formattedRent = Math.round(baseRent).toLocaleString();
+      const resultText = `예상 월 렌트 요금: 월 ${formattedRent} 원 수준`;
+      
+      const resultDiv = document.getElementById('calcResult');
+      const textPara = document.getElementById('calcText');
+      
+      textPara.textContent = resultText;
+      resultDiv.style.display = 'block';
+    }
+
+    // 인터랙티브 퀴즈 선택형 분기 및 체류시간 유도 제어
+    let quizAnswers = {};
+
+    function selectQuizOption(step, val) {
+      quizAnswers[step] = val;
+      const currentStepDiv = document.getElementById('quiz-step-' + step);
+      if (currentStepDiv) {
+        // 버튼 하이라이트
+        const buttons = currentStepDiv.querySelectorAll('.quiz-btn');
+        buttons.forEach(btn => {
+          btn.classList.remove('selected');
+        });
+        // 클릭된 버튼 표시
+        event.currentTarget.classList.add('selected');
+      }
+
+      setTimeout(() => {
+        if (step < 3) {
+          document.getElementById('quiz-step-' + step).style.display = 'none';
+          document.getElementById('quiz-step-' + (step + 1)).style.display = 'block';
+        } else {
+          showQuizResult();
+        }
+      }, 400);
+    }
+
+    function showQuizResult() {
+      document.getElementById('quiz-step-3').style.display = 'none';
+      const resultDiv = document.getElementById('quizResult');
+      const resultText = document.getElementById('quizResultText');
+      
+      let recommendation = "";
+      if (quizAnswers[1] === 'short' && quizAnswers[2] === 'comfort') {
+        recommendation = "귀하께는 전비 효율성과 데일리 출퇴근 승차감을 극대화한 '폴스타3 롱레인지 싱글모터 플러스 팩 적용 트림'을 강력히 추천합니다. 불필요한 출력을 덜어내어 가장 합리적인 월 렌트비 설계가 가능합니다.";
+      } else if (quizAnswers[1] === 'long' && quizAnswers[2] === 'power') {
+        recommendation = "귀하께는 눈길과 고속 도로 전 구간에서 완벽한 제어력을 보이는 사륜 트림 '폴스타3 롱레인지 듀얼모터 퍼포먼스 패키지 에디션'을 추천합니다. 타협 없는 최고의 다이내믹 주행이 보장됩니다.";
+      } else if (quizAnswers[3] === 'budget') {
+        recommendation = "예산을 적극 절감하기 위해 장기렌트 월 렌트비 부담을 최소화한 '폴스타3 롱레인지 싱글모터 라이트 실속형 패키지'가 가장 적합합니다. 보증 조건 조정을 통해 월 납입 부담을 80만 원 선 아래로 세팅해 보십시오.";
+      } else {
+        recommendation = "럭셔리 플래그십 수준의 최고 편의 옵션과 승차감을 원하시는 귀하께는 '2026년형 폴스타3 듀얼모터 프로 플러스 완전체 사양'을 추천합니다. 바워스앤윌킨스 및 액티브 에어 서스펜션이 안락한 드라이빙 환경을 선사합니다.";
+      }
+
+      resultText.textContent = recommendation;
+      resultDiv.style.display = 'block';
+    }
+
+    function resetQuiz() {
+      quizAnswers = {};
+      document.getElementById('quizResult').style.display = 'none';
+      document.getElementById('quiz-step-1').style.display = 'block';
+      document.getElementById('quiz-step-2').style.display = 'none';
+      document.getElementById('quiz-step-3').style.display = 'none';
+      
+      const buttons = document.querySelectorAll('.quiz-btn');
+      buttons.forEach(btn => btn.classList.remove('selected'));
+    }
+  </script>
+
+  
